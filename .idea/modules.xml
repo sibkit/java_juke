@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/juke.common/juke.common.iml" filepath="$PROJECT_DIR$/juke.common/juke.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.orm/juke.orm.iml" filepath="$PROJECT_DIR$/juke.orm/juke.orm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.orm.jdbc/juke.orm.jdbc.iml" filepath="$PROJECT_DIR$/juke.orm.jdbc/juke.orm.jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.orm.jdbc.postgresql/juke.orm.jdbc.postgresql.iml" filepath="$PROJECT_DIR$/juke.orm.jdbc.postgresql/juke.orm.jdbc.postgresql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.orm.net/juke.orm.net.iml" filepath="$PROJECT_DIR$/juke.orm.net/juke.orm.net.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.orm.net.client/juke.orm.net.client.iml" filepath="$PROJECT_DIR$/juke.orm.net.client/juke.orm.net.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.orm.net.server/juke.orm.net.server.iml" filepath="$PROJECT_DIR$/juke.orm.net.server/juke.orm.net.server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.presentation/juke.presentation.iml" filepath="$PROJECT_DIR$/juke.presentation/juke.presentation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.swing/juke.swing.iml" filepath="$PROJECT_DIR$/juke.swing/juke.swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.test/juke.test.iml" filepath="$PROJECT_DIR$/juke.test/juke.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juke.view/juke.view.iml" filepath="$PROJECT_DIR$/juke.view/juke.view.iml" />
+    </modules>
+  </component>
+</project>

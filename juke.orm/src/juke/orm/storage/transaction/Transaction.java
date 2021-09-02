@@ -12,7 +12,7 @@ import java.util.EventObject;
  * User: chelovek
  * Date: 07.01.12
  * Time: 2:17
- * To change this utec.orm.sqliteAndroid.templating use File | Settings | File Templates.
+ * To change this juke.orm.sqliteAndroid.templating use File | Settings | File Templates.
  */
 public interface Transaction
 {

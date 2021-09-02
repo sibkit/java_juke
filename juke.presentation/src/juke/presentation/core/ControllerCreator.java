@@ -1,4 +1,4 @@
-/*package juke.presentation.lm.swing.core;
+/*package juke.presentation.budzo.core.swing.core;
 
 import juke.presentation.ViewController;
 

@@ -3,7 +3,7 @@ package juke.common; /**
  * User: chelovek
  * Date: 04.09.11
  * Time: 16:42
- * To change this utec.orm.sqliteAndroid.templating use File | Settings | File Templates.
+ * To change this juke.orm.sqliteAndroid.templating use File | Settings | File Templates.
  */
 
 import java.lang.reflect.GenericDeclaration;

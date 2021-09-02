@@ -7,7 +7,7 @@ import java.util.EventObject;
  * User: chelovek
  * Date: 13.01.12
  * Time: 9:59
- * To change this utec.orm.sqliteAndroid.templating use File | Settings | File Templates.
+ * To change this juke.orm.sqliteAndroid.templating use File | Settings | File Templates.
  */
 public class ExecuteActionEvent extends EventObject
 {

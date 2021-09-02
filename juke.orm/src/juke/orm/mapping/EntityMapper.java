@@ -69,7 +69,7 @@ public abstract class EntityMapper<T>
 
 /*
 	int[] bindingMap;
-	int[] getBindingMap(QueryResultItem[] siResult, FieldMap[] maps) throws UtecException
+	int[] getBindingMap(QueryResultItem[] siResult, FieldMap[] maps) throws JukeException
     {
         if (bindingMap == null)
         {

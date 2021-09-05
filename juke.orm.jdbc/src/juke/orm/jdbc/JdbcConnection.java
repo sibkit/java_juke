@@ -18,6 +18,7 @@ import juke.orm.storage.sequence.SequenceOperation;
 import juke.orm.storage.transaction.Transaction;
 
 import java.sql.*;
+import java.util.List;
 
 public class JdbcConnection implements Connection
 {
@@ -159,6 +160,13 @@ public class JdbcConnection implements Connection
                 throw (JukeException)ex;
             throw new JukeException(ex.getMessage());
         }
+    }
+
+    @Override
+    public void executeOperations(List<EntityOperation> operations) throws JukeException
+    {
+        for(EntityOperation eo : operations)
+            executeOperation(eo);
     }
 
     private ResultSetHandler rsHandler;

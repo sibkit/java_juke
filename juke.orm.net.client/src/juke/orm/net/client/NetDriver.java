@@ -1,22 +1,25 @@
-package juke.orm.client;
+package juke.orm.net.client;
 
 import juke.exceptions.JukeException;
 import juke.orm.MappingData;
 import juke.orm.storage.Connection;
 import juke.orm.storage.StorageDriver;
 
-public class ClientDriver implements StorageDriver
+public class NetDriver implements StorageDriver
 {
+    MappingData mappingData;
+
     @Override
     public void initialize(MappingData mappingData)
     {
-
+        this.mappingData = mappingData;
     }
 
     @Override
     public Connection createConnection() throws JukeException
     {
-        return null;
+        NetConnection result = new NetConnection();
+        return result;
     }
 
 

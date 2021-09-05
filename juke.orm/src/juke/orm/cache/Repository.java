@@ -123,6 +123,8 @@ public class Repository
 
 	public void flush() throws JukeException
 	{
+		List<EntityOperation> operations = new ArrayList<>();
+
 		for (Map.Entry<Class, EntityCaseGroup> ecgEntry : caseMap.entrySet())
 		{
 			for (EntityCase ec : ecgEntry.getValue().getCases())
@@ -137,10 +139,11 @@ public class Repository
 						operation.setOldContent(sourceSs.getContent());
 					operation.setNewContent(newSs.getContent());
 					operation.setOperationType(newSs.getEntityOperationType());
-					this.session.getConnection().executeOperation(operation);
+					operations.add(operation);
 				}
 			}
 		}
+		this.session.getConnection().executeOperations(operations);
 	}
 
 	private void put(Object entity, EntityPutAction putAction) throws JukeException

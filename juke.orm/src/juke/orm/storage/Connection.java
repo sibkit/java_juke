@@ -8,6 +8,9 @@ import juke.orm.storage.operation.EntityOperation;
 import juke.orm.storage.sequence.Sequence;
 import juke.orm.storage.transaction.Transaction;
 
+import java.util.EventObject;
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: chelovek
@@ -17,14 +20,16 @@ import juke.orm.storage.transaction.Transaction;
  */
 public interface Connection
 {
-    EventEmitter getAfterOperationExecuteEmitter();
-    EventEmitter getBeforeOperationExecuteEmitter();
+    EventEmitter<EventObject> getAfterOperationExecuteEmitter();
+    EventEmitter<EventObject> getBeforeOperationExecuteEmitter();
+
     void close() throws JukeException;
     boolean isClosed() throws JukeException;
 	Transaction getCurrentTransaction();
     Transaction beginTransaction() throws JukeException;
 
-	Sequence getSequence(SequenceMap map) throws JukeException;
+	Sequence<?> getSequence(SequenceMap map) throws JukeException;
     void executeOperation(EntityOperation operation) throws JukeException;
+    void executeOperations(List<EntityOperation> operation) throws JukeException;
     StorageIterator iterate(Query query) throws JukeException;
 }

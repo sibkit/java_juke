@@ -1,7 +1,6 @@
 package juke.orm.querying.fields;
 
-import juke.common.ChargingList;
-import juke.orm.querying.QueryElementList;
+import juke.common.ChildList;
 import juke.orm.querying.QueryElementType;
 
 import java.util.Arrays;
@@ -18,7 +17,7 @@ public class FunctionField extends Field
 {
 	private FunctionField thisField = this;
 	private FunctionType functionType;
-	private List<Field> nestedFields = new QueryElementList<>(this);
+	private List<Field> nestedFields = new ChildList<>(this);
 
 	public FunctionField(FunctionType functionType)
 	{

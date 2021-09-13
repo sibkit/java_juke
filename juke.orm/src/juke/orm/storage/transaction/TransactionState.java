@@ -8,7 +8,8 @@ package juke.orm.storage.transaction;
  *
  * @author chelovek
  */
-public enum TransactionState {
+public enum TransactionState
+{
     OPENED,
     COMMITTED,
     ABORTED,

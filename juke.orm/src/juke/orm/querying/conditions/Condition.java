@@ -1,7 +1,7 @@
 package juke.orm.querying.conditions;
 
+import juke.common.ChildList;
 import juke.orm.querying.QueryElement;
-import juke.orm.querying.QueryElementList;
 import juke.orm.querying.QueryElementType;
 import juke.orm.querying.fields.Field;
 
@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class Condition extends QueryElement
 {
-    private final QueryElementList<Condition> innerConditions = new QueryElementList<Condition>(this);
-    private final List<Field> fields = new QueryElementList<Field>(this);
+    private final ChildList<Condition, Condition> innerConditions = new ChildList<>(this);
+    private final List<Field> fields = new ChildList<>(this);
     private final ConditionType conditionType;
 
 

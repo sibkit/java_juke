@@ -7,5 +7,4 @@ public interface StorageDriver
 {
     void initialize(MappingData mappingData);
     Connection createConnection() throws JukeException;
-    //public EventEmitter<>
 }

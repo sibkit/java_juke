@@ -22,7 +22,7 @@ public class QueryField extends Field
     public void setQuery(Query query)
     {
         this.query = query;
-        addChild(query);
+        query.setParent(this);
     }
 
     @Override

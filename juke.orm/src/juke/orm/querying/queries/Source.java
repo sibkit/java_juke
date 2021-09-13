@@ -10,8 +10,7 @@ public class Source extends QueryElement
 
     public Source(Query query)
     {
-        this.query = query;
-        addChild(query);
+        setQuery(query);
     }
 
     public Source(Query query, String alias)
@@ -27,9 +26,7 @@ public class Source extends QueryElement
 
     public void setQuery(Query query)
     {
-        removeChild(this.query);
-        this.query = query;
-        addChild(query);
+        this.query = prepareChild(this.query,query);
     }
 
     public String getAlias()

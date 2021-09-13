@@ -36,8 +36,7 @@ public class JoinQuery extends Query
     }
     public void setOnCondition(Condition onCondition)
     {
-        this.onCondition = onCondition;
-        addChild(onCondition);
+        this.onCondition = prepareChild(this.onCondition, onCondition);
     }
 
     public Source getLeftSource()
@@ -47,8 +46,7 @@ public class JoinQuery extends Query
 
     public void setLeftSource(Source leftSource)
     {
-        this.leftSource = leftSource;
-        addChild(leftSource);
+        this.leftSource = prepareChild(this.leftSource,leftSource);
     }
 
     public Source getRightSource()
@@ -57,7 +55,6 @@ public class JoinQuery extends Query
     }
     public void setRightSource(Source rightSource)
     {
-        this.rightSource = rightSource;
-        addChild(rightSource);
+        this.rightSource = prepareChild(this.rightSource, rightSource);
     }
 }

@@ -10,6 +10,9 @@ import juke.orm.storage.operation.EntityOperation;
 import juke.orm.storage.sequence.Sequence;
 import juke.orm.storage.transaction.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NetConnection implements Connection
 {
     @Override
@@ -56,6 +59,14 @@ public class NetConnection implements Connection
 
     @Override
     public void executeOperation(EntityOperation operation) throws JukeException
+    {
+        List<EntityOperation> operations = new ArrayList<>();
+        operations.add(operation);
+        executeOperations(operations);
+    }
+
+    @Override
+    public void executeOperations(List<EntityOperation> operation) throws JukeException
     {
 
     }

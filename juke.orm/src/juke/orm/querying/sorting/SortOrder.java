@@ -31,7 +31,7 @@ public class SortOrder extends QueryElement
     public void setField(Field field)
     {
         this.field = field;
-	    addChild(this);
+	    field.setParent(this);
     }
 
     private SortOrderDirection sortOrderDirection;

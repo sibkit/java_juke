@@ -1,7 +1,7 @@
 package juke.orm.querying.queries;
 
+import juke.common.ChildList;
 import juke.orm.querying.QueryElement;
-import juke.orm.querying.QueryElementList;
 import juke.orm.querying.conditions.Condition;
 import juke.orm.querying.fields.Field;
 import juke.orm.querying.sorting.SortOrder;
@@ -13,11 +13,11 @@ import java.util.List;
 
 public abstract class Query extends QueryElement
 {
-	private final List<Field> fields = new QueryElementList<>(this);
+	private final List<Field> fields = new ChildList<Query,Field>(this);
 	private int offset;
 	private int limit;
 	private Condition condition;
-	private final List<SortOrder> sortOrders = new QueryElementList<>(this);
+	private final List<SortOrder> sortOrders = new ChildList<Query,SortOrder>(this);
 
 	public List<Field> getFields()
 	{
@@ -48,8 +48,7 @@ public abstract class Query extends QueryElement
 	}
 	public void setCondition(Condition condition)
 	{
-		this.condition = condition;
-		addChild(condition);
+		this.condition = prepareChild(this.condition, condition);
 	}
 
 	public List<SortOrder> getSortOrders()

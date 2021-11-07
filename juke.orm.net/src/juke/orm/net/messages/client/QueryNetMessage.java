@@ -1,18 +1,14 @@
 package juke.orm.net.messages.client;
 
-import juke.net.messages.NetMessage;
 import juke.orm.querying.queries.Query;
 
-public class QueryNetMessage extends NetMessage
+public class QueryNetMessage
 {
     public static final String key = "Query";
 
     private Query query;
 
-    public QueryNetMessage(int number)
-    {
-        super(number, key);
-    }
+
 
     public Query getQuery()
     {

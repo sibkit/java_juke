@@ -1,22 +1,26 @@
 package juke.net.server;
 
 import juke.events.EventHandler;
+import juke.net.SocketHandler;
+import juke.net.SocketInitializer;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.EventObject;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class JukeServer
 {
-    private final static int defaultSocket = 20854;
-    private static Map<Thread, ClientHandler> clientHandlers;
+    private static Map<Thread, SocketHandler> clientHandlers;
     private final static Object syncKey = new Object();
-
     private static Boolean stopServerRequired = false;
+    private SocketInitializer initializer;
 
-    public static void stopServer()
+    public JukeServer(SocketInitializer initializer)
+    {
+        this.initializer = initializer;
+    }
+
+    public void stop()
     {
         synchronized (syncKey)
         {
@@ -24,7 +28,7 @@ public class JukeServer
         }
     }
 
-    public static ClientHandler getClientHandler()
+    public SocketHandler getSocketHandler()
     {
         synchronized (syncKey)
         {
@@ -32,31 +36,20 @@ public class JukeServer
         }
     }
 
-    public static void main(String[] args)
+    public void start(int port)
     {
         try
         {
-            int socket = defaultSocket;
-            for(int i=0; i<args.length;i++)
-            {
-                if("-socket".equals(args[i]))
-                {
-                    if(args.length>i+1)
-                        socket = Integer.parseInt(args[i+1]);
-                    else
-                        System.out.println("`-socket` parameter not defined");
-                }
-            }
-
             clientHandlers = new HashMap<>();
-            ServerSocket ss = new ServerSocket(socket);
+            ServerSocket ss = new ServerSocket(port);
             while (!stopServerRequired)
             {
                 Socket sClient = ss.accept();
-                ClientHandler ch = new ClientHandler(sClient);
-                Thread t = new Thread(ch);
-                clientHandlers.put(t, ch);
-                ch.getWorkEndEmitter().addHandler(new EventHandler<EventObject>()
+                SocketHandler sh = new SocketHandler(sClient);
+                initializer.initializeSocketHandler(sh);
+                Thread t = new Thread(sh);
+                clientHandlers.put(t, sh);
+                sh.getWorkEndEmitter().addHandler(new EventHandler<EventObject>()
                 {
                     @Override
                     public void handle(EventObject event)

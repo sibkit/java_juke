@@ -6,18 +6,16 @@ package juke.common; /**
  * To change this juke.orm.sqliteAndroid.templating use File | Settings | File Templates.
  */
 
-import java.lang.reflect.GenericDeclaration;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
+
+import java.lang.reflect.*;
 import java.util.Stack;
 
 /**
  * Alex Tracer © 2009
  */
-public class ReflectionUtils {
+public class ReflectionUtils
+{
 
-    
     /**
      * Для некоторого класса определяет каким классом был параметризован один из его предков с generic-параметрами.
      *
@@ -26,7 +24,7 @@ public class ReflectionUtils {
      * @param parameterIndex номер параметра
      * @return класс, являющийся параметром с индексом parameterIndex в genericClass
      */
-    public static Class getGenericParameterClass(final Class actualClass, final Class genericClass, final int parameterIndex) {
+    public static Class<?> getGenericParameterClass(final Class<?> actualClass, final Class<?> genericClass, final int parameterIndex) {
         if (!genericClass.isAssignableFrom(actualClass.getSuperclass())) {
             throw new IllegalArgumentException("Class " + genericClass.getName() + " is not a superclass of " + actualClass.getName() + ".");
         }
@@ -38,9 +36,11 @@ public class ReflectionUtils {
         while (true) {
             Type genericSuperclass = clazz.getGenericSuperclass();
             boolean isParameterizedType = genericSuperclass instanceof ParameterizedType;
-            if (isParameterizedType) {
+            if (isParameterizedType)
+            {
                 genericClasses.push((ParameterizedType) genericSuperclass);
-            } else {
+            } else
+            {
                 genericClasses.clear();
             }
             Type rawType = isParameterizedType ? ((ParameterizedType) genericSuperclass).getRawType() : genericSuperclass;
@@ -76,23 +76,27 @@ public class ReflectionUtils {
             throw new IllegalStateException("Actual parameter type for " + actualClass.getName() + " is not a Class.");
         }
 
-        return (Class) result;
+        return (Class<?>) result;
     }
 
-    public static int getParameterTypeDeclarationIndex(final TypeVariable typeVariable) {
+    public static int getParameterTypeDeclarationIndex(final TypeVariable typeVariable)
+    {
         GenericDeclaration genericDeclaration = typeVariable.getGenericDeclaration();
 
         TypeVariable[] typeVariables = genericDeclaration.getTypeParameters();
         Integer actualArgumentIndex = null;
-        for (int i = 0; i < typeVariables.length; i++) {
+        for (int i = 0; i < typeVariables.length; i++)
+        {
             if (typeVariables[i].equals(typeVariable)) {
                 actualArgumentIndex = i;
                 break;
             }
         }
-        if (actualArgumentIndex != null) {
+        if (actualArgumentIndex != null)
+        {
             return actualArgumentIndex;
-        } else {
+        } else
+        {
             throw new IllegalStateException("Argument " + typeVariable.toString() + " is not found in " + genericDeclaration.toString() + ".");
         }
     }

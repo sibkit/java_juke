@@ -40,7 +40,7 @@ public abstract class EntityMapper<T>
     public Class<T> getEntityClass() {
         if (entityClass == null)
         {
-            entityClass = ReflectionUtils.getGenericParameterClass(this.getClass(), EntityMapper.class, 0);
+            entityClass = (Class<T>)ReflectionUtils.getGenericParameterClass(this.getClass(), EntityMapper.class, 0);
         }
         return entityClass;
     }

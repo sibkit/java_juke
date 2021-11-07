@@ -41,8 +41,6 @@ public class Session
 		this.mappingData = sessionManager.getConfiguration().getMappingData();
 	}
 
-
-
 	public <T> T get(Class<T> entityClass, EntityKey key) throws JukeException
 	{
 		EntityMapper mapper = mappingData.getEntityMapper(entityClass);

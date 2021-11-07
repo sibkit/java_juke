@@ -2,17 +2,10 @@ package juke.net.messages;
 
 import juke.net.actions.NetActionProperty;
 
-public class SubscribeNetMessage extends NetMessage
+public class SubscribeNetMessage
 {
-    public static final String key = "Subscribe";
-
     private String actionType;
     private NetActionProperty[] subscribeConditions;
-
-    public SubscribeNetMessage(int number)
-    {
-        super(number, key);
-    }
 
     public NetActionProperty[] getSubscribeConditions()
     {
